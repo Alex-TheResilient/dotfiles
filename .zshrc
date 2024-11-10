@@ -36,3 +36,12 @@ zstyle ':completion:*' list-colors "${(s.:.)lS_COLORS}"
 
 # Aliases
 alias ls='ls --color'
+# fnm instalation
+FNM_PATH="/Users/atipaq/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/atipaq/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# Shell Setup fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
