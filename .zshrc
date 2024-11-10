@@ -35,7 +35,10 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)lS_COLORS}"
 
 # Aliases
+alias cls='clear'
 alias ls='ls --color'
+
+# Aliases for git
 alias g='git'
 # Alias git status
 alias gst='git status'
