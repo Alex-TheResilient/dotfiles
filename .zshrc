@@ -53,6 +53,11 @@ alias gcmsg='git commit --message'              # Commits staged changes with a 
 alias gc='git commit --verbose'                 # Commits staged changes verbosely.
 alias gcam='git commit --all --message'         # Commits all changes with a message.
 alias gca='git commit --verbose --all'          # Commits all changes verbosely
+# Alias Push
+alias gp='git push'
+alias gl='git pull'
+alias gm='git merge'
+
 
 # fnm instalation
 FNM_PATH="/Users/atipaq/Library/Application Support/fnm"
