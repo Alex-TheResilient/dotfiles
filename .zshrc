@@ -36,6 +36,24 @@ zstyle ':completion:*' list-colors "${(s.:.)lS_COLORS}"
 
 # Aliases
 alias ls='ls --color'
+alias g='git'
+# Alias git status
+alias gst='git status'
+alias gss='git status --short'
+alias gsb='git status --short --branch'
+# Alias for add file
+alias ga='git add'
+alias gaa='git add --all'
+# Alias branch
+alias gb='git branch'
+alias gba='git branch --all'
+alias gbd='git branch --delete'
+# Alias commit
+alias gcmsg='git commit --message'              # Commits staged changes with a message.
+alias gc='git commit --verbose'                 # Commits staged changes verbosely.
+alias gcam='git commit --all --message'         # Commits all changes with a message.
+alias gca='git commit --verbose --all'          # Commits all changes verbosely
+
 # fnm instalation
 FNM_PATH="/Users/atipaq/Library/Application Support/fnm"
 if [ -d "$FNM_PATH" ]; then
