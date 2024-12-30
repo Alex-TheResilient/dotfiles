@@ -1,0 +1,44 @@
+[user]
+    name = atipaq
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = code --wait
+
+[alias]
+    # General aliases
+    d = diff
+    co = checkout
+    ci = commit
+    ca = commit -a # Commit all changes (but not new untracked files)
+    cm = commit -m
+    st = status
+    br = branch # Short alias for git branch
+    ba = branch -a # Lists all branches, both local and remote
+    bm = branch --merged # Lists branches that have been merged into the current branch
+    bn = branch --no-merged # Lists branches that have not been merged into the current branch
+    lg = log --oneline --decorate --all --graph
+    hist = log --pretty=format:'%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)' --graph --date=relative --decorate --all
+    llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
+
+[color]
+    # Enables color in the output of git commands if the output is to a terminal
+    status = auto
+    diff = auto
+    branch = auto
+    interactive = auto # Enables color in interactive commands
+    ui = auto # Enables color in the Git UI
+
+[diff]
+    # Sets VS Code as the default diff tool
+    tool = vscode
+
+[difftool "vscode"]
+    # Defines the command to run VS Code in diff mode, comparing the local and remote files
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+[sequence]
+    # Configure Git to use VS Code for interactive rebase
+    editor = code --wait
