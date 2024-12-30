@@ -1,48 +1,44 @@
-# My dotfiles
+# Alex's dotfiles
 
-This direcory contains the dotfiles for my system
+This directory contains the dotfiles for my system, including configurations for Git, Zsh, and other tools.
 
-## Requirements
+### Requirements
 
-Ensure you have the following installed on your system
+- [Git](https://git-scm.com/downloads/mac)
+- [Warp](https://docs.warp.dev/getting-started/getting-started-with-warp)
+- [VSCode](https://code.visualstudio.com/download)
 
-### Git
+## How to Use
 
-```
-brew install git
-```
+### Clone this repository
 
-### Stow
-
-```
-brew install stow
-```
-
-### Zinit
-
-Zinit is a flexible and fast Zshell plugin manager.
-
-> It is already configured in the zsh file
-
-## Installation
-
-First, check out the dotfiles repo in your $HOME directory using git
-
-```
+```zsh
 git clone git@github.com:atipaq/dotfiles.git
 ```
 
-```
-cd dotfiles
+### Create a symbolic links
+
+Create symbolic link from your home directory to the dotfiles directory:
+
+```bash
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ```
 
-then use GNU stow to create symlinks
+### Verify the Setup
+
+Check the symbolic link:
+
+```bash
+ls -l ~/.gitconfig
+```
+
+Verify Git is using the correct configuration:
 
 ```
-stow .
+git config --list
 ```
 
-Reload Zsh to install Zinit
+Reload Zsh
 
 ```
 exec zsh
