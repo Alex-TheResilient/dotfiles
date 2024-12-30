@@ -15,7 +15,8 @@
     ci = commit
     ca = commit -a # Commit all changes (but not new untracked files)
     cm = commit -m
-    st = status
+	sb = status --short --branch
+    st = status --short
     br = branch # Short alias for git branch
     ba = branch -a # Lists all branches, both local and remote
     bm = branch --merged # Lists branches that have been merged into the current branch
