@@ -2,13 +2,10 @@
 
 This directory contains the dotfiles for my system, including configurations for Git, Zsh, and other tools.
 
-### Requirements
+### Shell Setup
 
 - [Git](https://git-scm.com/downloads/mac)
 - [Warp](https://docs.warp.dev/getting-started/getting-started-with-warp)
-- [VSCode](https://code.visualstudio.com/download)
-- [Rust (fnm dependency)](https://www.rust-lang.org/es/learn/get-started)
-- [fnm (Fast Node Manger)](https://github.com/Schniz/fnm)
 
 ## How to Use
 
@@ -38,12 +35,29 @@ ls -l ~/.zshrc
 
 Verify Git is using the correct configuration:
 
-```
+```bash
 git config --list
 ```
 
 Reload Zsh
 
+```bash
+exec ~/.zshrc
 ```
-exec zsh
+
+### Development Tools
+
+- [VSCode](https://code.visualstudio.com/download)
+- [Rust (fnm dependency)](https://www.rust-lang.org/es/learn/get-started)
+- [fnm (Fast Node Manger)](https://github.com/Schniz/fnm)
+- [Node.js](https://nodejs.org/en/download)
+- [pnpm](https://pnpm.io/installation#using-corepack)
+
+> Since v16.13, Node.js is shipping Corepack for managing package managers.
+
+```bash
+# Download and install pnpm:
+corepack enable pnpm
+# Verify pnpm version:
+pnpm -v
 ```
