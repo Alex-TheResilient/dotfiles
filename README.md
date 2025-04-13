@@ -2,27 +2,33 @@
 
 This directory contains the dotfiles for my system, including configurations for Git, Zsh, and other tools.
 
-### Shell Setup
+## Shell & Terminal Setup
 
 - [Git](https://git-scm.com/downloads/mac)
-- [Warp](https://docs.warp.dev/getting-started/getting-started-with-warp)
+- [Starship prompt](https://starship.rs/)
+- Nerd Font: [IosevkaTerm Nerd Font](https://www.nerdfonts.com/font-downloads)
+- [Ghostty](https://ghostty.org/)
 
-## How to Use
+## Installation
 
-### Clone this repository
-
-```bash
-git clone git@github.com:atipaq/dotfiles.git
-```
-
-### Create a symbolic links
-
-Create symbolic link from your home directory to the dotfiles directory:
+### 1. Clone this repository
 
 ```bash
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/.zshrc ~/.zshrc
+git clone git@github.com:atipaq/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ```
+
+### 2. Run the install script
+
+```bash
+./install.sh
+```
+
+This will:
+
+- Link .zshrc, starship.toml, Neovim config, Ghostty config
+- Ensure ~/.config structure is correct
+- (Optionally) install Starship if not found
 
 ### Verify the Setup
 
@@ -33,16 +39,13 @@ ls -l ~/.gitconfig
 ls -l ~/.zshrc
 ```
 
-Verify Git is using the correct configuration:
+## Font Configuration
+
+In VSCode, update your settings.json:
 
 ```bash
-git config --list
-```
-
-Reload Zsh
-
-```bash
-exec ~/.zshrc
+"editor.fontFamily": "'IosevkaTerm NF', monospace",
+"terminal.integrated.fontFamily": "'IosevkaTerm NF'"
 ```
 
 ### Development Tools
@@ -52,6 +55,12 @@ exec ~/.zshrc
 - [fnm (Fast Node Manger)](https://github.com/Schniz/fnm)
 - [Node.js](https://nodejs.org/en/download)
 - [pnpm](https://pnpm.io/installation#using-corepack)
+
+#### Nvim
+
+- [lazyvim](https://www.lazyvim.org/)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [fzf](https://github.com/junegunn/fzf)
 
 > Since v16.13, Node.js is shipping Corepack for managing package managers.
 
