@@ -1,11 +1,52 @@
 #!/bin/bash
 
-echo "Setting up nvim with LazyVim"
+set -e
+
+echo "🔧 Starting environment setup..."
+
+# Create necessary folders
+mkdir -p ~/.config
+
+# Set up Nvim (LazyVim)
+echo "📦 Setting up Nvim with LazyVim..."
 rm -rf ~/.config/nvim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 echo "✅ Nvim (LazyVim) successfully linked"
 
-echo "Setting up Ghostty config"
+# Set up Ghostty
+echo "📦 Setting up Ghostty..."
 rm -rf ~/.config/ghostty
 ln -s ~/dotfiles/ghostty ~/.config/ghostty
 echo "✅ Ghostty config successfully linked"
+
+# Set up .zshrc
+echo "📄 Setting up .zshrc..."
+rm -f ~/.zshrc
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+echo "✅ .zshrc successfully linked"
+
+# Check if Starship is installed
+if ! command -v starship &> /dev/null; then
+  echo "🌟 Starship not found. Installing..."
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+  echo "✅ Starship successfully installed"
+else
+  echo "🌟 Starship is already installed"
+fi
+
+# Set up starship.toml
+if [ -f ~/dotfiles/starship.toml ]; then
+  echo "📄 Setting up starship.toml..."
+  rm -f ~/.config/starship.toml
+  ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
+  echo "✅ starship.toml successfully linked"
+elif [ -f ~/dotfiles/starship/starship.toml ]; then
+  echo "📄 Setting up starship/starship.toml..."
+  rm -f ~/.config/starship.toml
+  ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
+  echo "✅ starship.toml successfully linked"
+else
+  echo "⚠️  starship.toml not found in dotfiles"
+fi
+
+echo "🎉 Setup complete! Run 'source ~/.zshrc' or restart your terminal to apply the changes."
