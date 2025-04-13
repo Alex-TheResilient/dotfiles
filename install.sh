@@ -25,6 +25,12 @@ rm -f ~/.zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 echo "✅ .zshrc successfully linked"
 
+# Set up .gitconfig
+echo "📄 Setting up .gitconfig..."
+rm -f ~/.gitconfig
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+echo "✅ .gitconfig successfully linked"
+
 # Check if Starship is installed
 if ! command -v starship &> /dev/null; then
   echo "🌟 Starship not found. Installing..."
