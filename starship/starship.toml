@@ -35,8 +35,8 @@ text_color = "#C9C7CD"
 text_light = "#000000"
 
 [character]
-success_symbol = "[󰞇](fg:#85B5BA)"
-error_symbol   = "[󰞇](fg:red)"
+success_symbol = "[󰞇](fg:#85B5BA) "
+error_symbol   = "[󰞇](fg:red) "
 
 [username]
 style_user    = 'bold os'
