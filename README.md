@@ -52,7 +52,6 @@ In VSCode, update your settings.json:
 
 - [VSCode](https://code.visualstudio.com/download)
 - [Rust (fnm dependency)](https://www.rust-lang.org/es/learn/get-started)
-- [fnm (Fast Node Manger)](https://github.com/Schniz/fnm)
 - [Node.js](https://nodejs.org/en/download)
 - [pnpm](https://pnpm.io/installation#using-corepack)
 
@@ -62,7 +61,23 @@ In VSCode, update your settings.json:
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 
+#### fnm (Fast Node Manager)
+
+- [fnm (Fast Node Manger)](https://github.com/Schniz/fnm)
+
+**Instalación:**
+
+```bash
+# En macOS con Homebrew
+brew install fnm
+
+# O mediante curl
+curl -fsSL https://fnm.vercel.app/install | bash
+```
+
 > Since v16.13, Node.js is shipping Corepack for managing package managers.
+
+**pnpm - Gestor de paquetes rápido y eficiente**
 
 ```bash
 # Download and install pnpm:
