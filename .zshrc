@@ -8,6 +8,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 # ─── Alias útiles ──────────────────────────────────
+# ─── LS configuration ──────────────────────────────────
 alias ll="ls -alF"
-alias gs="git status"
+alias ls="ls --color=auto"
+
 alias ..="cd .."
