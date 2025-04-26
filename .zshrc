@@ -12,4 +12,6 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 alias ll="ls -alF"
 alias ls="ls --color=auto"
 
+# ─── Utilidades ──────────────────────────────
 alias ..="cd .."
+alias c="clear"
