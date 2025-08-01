@@ -7,18 +7,6 @@ echo "🔧 Starting environment setup..."
 # Create necessary folders
 mkdir -p ~/.config
 
-# Set up Nvim (LazyVim)
-echo "📦 Setting up Nvim with LazyVim..."
-rm -rf ~/.config/nvim
-ln -s ~/dotfiles/nvim ~/.config/nvim
-echo "✅ Nvim (LazyVim) successfully linked"
-
-# Set up Ghostty
-echo "📦 Setting up Ghostty..."
-rm -rf ~/.config/ghostty
-ln -s ~/dotfiles/ghostty ~/.config/ghostty
-echo "✅ Ghostty config successfully linked"
-
 # Set up .zshrc
 echo "📄 Setting up .zshrc..."
 rm -f ~/.zshrc
