@@ -1,87 +1,50 @@
 # Alex's dotfiles
 
-This directory contains the dotfiles for my system, including configurations for Git, Zsh, and other tools.
+My development environment setup.
 
-## Shell & Terminal Setup
+## What gets installed
 
-- [Git](https://git-scm.com/downloads/mac)
-- [Starship prompt](https://starship.rs/)
-- Nerd Font: [IosevkaTerm Nerd Font](https://www.nerdfonts.com/font-downloads)
-- [Ghostty](https://ghostty.org/)
+**Shell & Config:**
 
-## Installation
+- `.zshrc` symlink with Starship prompt and fnm configuration
+- Fira Code font (latest from GitHub)
 
-### 1. Clone this repository
+**Development Tools:**
+
+- Homebrew (package manager)
+- fnm (Fast Node Manager)
+- Node.js LTS (via fnm)
+
+## Quick Setup
 
 ```bash
-git clone git@github.com:atipaq/dotfiles.git ~/dotfiles
+git clone https://github.com/Alex-TheResilient/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-```
-
-### 2. Run the install script
-
-```bash
 ./install.sh
 ```
 
-This will:
+Restart your terminal when done.
 
-- Link .zshrc, starship.toml, Neovim config, Ghostty config
-- Ensure ~/.config structure is correct
-- (Optionally) install Starship if not found
+## VS Code Font Setup
 
-### Verify the Setup
+Add to your settings.json:
 
-Check the symbolic link:
-
-```bash
-ls -l ~/.gitconfig
-ls -l ~/.zshrc
+```json
+{
+  "editor.fontFamily": "'Fira Code', monospace",
+  "editor.fontLigatures": true
+}
 ```
 
-## Font Configuration
+## Manual Installs
 
-In VSCode, update your settings.json:
+These tools need to be installed separately:
 
-```bash
-"editor.fontFamily": "'IosevkaTerm NF', monospace",
-"terminal.integrated.fontFamily": "'IosevkaTerm NF'"
-```
+- [VS Code](https://code.visualstudio.com/)
 
-### Development Tools
-
-- [VSCode](https://code.visualstudio.com/download)
-- [Rust (fnm dependency)](https://www.rust-lang.org/es/learn/get-started)
-- [Node.js](https://nodejs.org/en/download)
-- [pnpm](https://pnpm.io/installation#using-corepack)
-
-#### Nvim
-
-- [lazyvim](https://www.lazyvim.org/)
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [fzf](https://github.com/junegunn/fzf)
-
-#### fnm (Fast Node Manager)
-
-- [fnm (Fast Node Manger)](https://github.com/Schniz/fnm)
-
-**Instalación:**
+## Verify Setup
 
 ```bash
-# En macOS con Homebrew
-brew install fnm
-
-# O mediante curl
-curl -fsSL https://fnm.vercel.app/install | bash
-```
-
-> Since v16.13, Node.js is shipping Corepack for managing package managers.
-
-**pnpm - Gestor de paquetes rápido y eficiente**
-
-```bash
-# Download and install pnpm:
-corepack enable pnpm
-# Verify pnpm version:
-pnpm -v
+fnm --version
+node --version
 ```
