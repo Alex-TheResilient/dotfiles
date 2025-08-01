@@ -48,3 +48,11 @@ These tools need to be installed separately:
 fnm --version
 node --version
 ```
+
+**Important:** When switching Node.js versions with fnm, you need to re-enable pnpm:
+
+```bash
+corepack enable pnpm
+```
+
+This is required each time you install or switch to a different Node.js version.
