@@ -1,46 +1,108 @@
 #!/bin/bash
 
-set -e
+# Development Environment Setup Script for macOS
 
-echo "🔧 Starting environment setup..."
+echo "Setting up development environment..."
+echo ""
 
-# Create necessary folders
-mkdir -p ~/.config
+# Function to setup dotfiles symlinks
+setup_dotfiles() {
+    echo "Setting up dotfiles..."
+    
+    # Get the directory where this script is located
+    DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    
+    # Create symlink for .zshrc
+    if [ -f "$DOTFILES_DIR/.zshrc" ]; then
+        # Backup existing .zshrc if it exists and is not a symlink
+        if [ -f ~/.zshrc ] && [ ! -L ~/.zshrc ]; then
+            echo "Backing up existing .zshrc to .zshrc.backup"
+            mv ~/.zshrc ~/.zshrc.backup
+        fi
+        
+        # Create symlink
+        ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
+        echo "Symlink created: ~/.zshrc -> $DOTFILES_DIR/.zshrc"
+    else
+        echo "Warning: .zshrc not found in dotfiles directory"
+    fi
+}
 
-# Set up .zshrc
-echo "📄 Setting up .zshrc..."
-rm -f ~/.zshrc
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-echo "✅ .zshrc successfully linked"
+# Function to install Homebrew if not exists
+install_homebrew() {
+    if ! command_exists brew; then
+        echo "Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    else
+        echo "Homebrew already installed"
+    fi
+}
 
-# Set up .gitconfig
-echo "📄 Setting up .gitconfig..."
-rm -f ~/.gitconfig
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-echo "✅ .gitconfig successfully linked"
+# Function to install Fira Code
+install_fira_code() {
+    echo "Checking Fira Code..."
+    
+    if ls ~/Library/Fonts/*FiraCode* >/dev/null 2>&1; then
+        echo "Fira Code already installed"
+        return
+    fi
+    
+    echo "Installing Fira Code..."
+    TEMP_DIR=$(mktemp -d)
+    cd "$TEMP_DIR"
+    
+    curl -L -o FiraCode.zip "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+    
+    if [ $? -eq 0 ]; then
+        unzip -q FiraCode.zip
+        cp ttf/*.ttf ~/Library/Fonts/
+        echo "Fira Code installed"
+    else
+        echo "Error downloading Fira Code"
+    fi
+    
+    cd ~
+    rm -rf "$TEMP_DIR"
+}
 
-# Check if Starship is installed
-if ! command -v starship &> /dev/null; then
-  echo "🌟 Starship not found. Installing..."
-  curl -sS https://starship.rs/install.sh | sh -s -- -y
-  echo "✅ Starship successfully installed"
-else
-  echo "🌟 Starship is already installed"
-fi
+# Function to install fnm (Fast Node Manager)
+install_fnm() {
+    echo "Checking fnm..."
+    
+    if command_exists fnm; then
+        echo "fnm already installed"
+        return
+    fi
+    
+    echo "Installing fnm via Homebrew..."
+    brew install fnm
+    echo "fnm installed (shell configuration detected in dotfiles)"
+}
 
-# Set up starship.toml
-if [ -f ~/dotfiles/starship.toml ]; then
-  echo "📄 Setting up starship.toml..."
-  rm -f ~/.config/starship.toml
-  ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
-  echo "✅ starship.toml successfully linked"
-elif [ -f ~/dotfiles/starship/starship.toml ]; then
-  echo "📄 Setting up starship/starship.toml..."
-  rm -f ~/.config/starship.toml
-  ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
-  echo "✅ starship.toml successfully linked"
-else
-  echo "⚠️  starship.toml not found in dotfiles"
-fi
+# Function to check if command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
 
-echo "🎉 Setup complete! Run 'source ~/.zshrc' or restart your terminal to apply the changes."
+# Main installation sequence
+main() {
+    setup_dotfiles
+    install_homebrew
+    install_fira_code
+    install_fnm
+    
+    echo ""
+    echo "Setup completed!"
+    echo ""
+    echo "Next steps:"
+    echo "1. Restart your terminal"
+    echo "2. Configure VS Code with Fira Code:"
+    echo "   - Settings > Editor: Font Family"
+    echo "   - Add: 'Fira Code', monospace"
+    echo "   - Enable: \"editor.fontLigatures\": true"
+    echo "3. Check Node.js: node --version"
+    echo "4. Check fnm: fnm list"
+}
+
+# Run main function
+main
